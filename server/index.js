@@ -9,7 +9,6 @@ const helmet = require('helmet');
 /** Load environment variables from .env file if dev mode **/
 if (process.env.NODE_ENV === 'development') {
   dotenv.load({ path: '.env' });
-  console.log(process.env.TEST_KEY);
 }
 
 /** Create Express Server **/
@@ -19,6 +18,12 @@ const PORT = process.env.PORT || 8080;
 /** Server config **/
 app.use(bodyParser.json());
 app.use(helmet());
+
+/** Express Routers **/
+const apiRouter = require('./routers/api');
+
+/** Install Express Routers **/
+app.use('/api', apiRouter);
 
 /** Start Server **/
 app.listen(PORT, (err) => {
