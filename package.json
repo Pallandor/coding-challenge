@@ -1,0 +1,20 @@
+{
+  "name": "coding-challenge",
+  "version": "1.0.0",
+  "description": "**Technical Test (Nine Entertainment Co/Digital)** Node.js coding challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pallandor/coding-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Pallandor/coding-challenge/issues"
+  },
+  "homepage": "https://github.com/Pallandor/coding-challenge#readme"
+}
