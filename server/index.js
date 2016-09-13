@@ -6,6 +6,8 @@ const dotenv = require('dotenv');
 const winston = require('winston');
 const helmet = require('helmet');
 
+const util = require('./util');
+
 /** Load environment variables from .env file if dev mode **/
 if (process.env.NODE_ENV === 'development') {
   dotenv.load({ path: '.env' });
@@ -17,6 +19,7 @@ const PORT = process.env.PORT || 8080;
 
 /** Server config **/
 app.use(bodyParser.json());
+app.use(util.reportBadJSON())
 app.use(helmet());
 
 /** Express Routers **/
