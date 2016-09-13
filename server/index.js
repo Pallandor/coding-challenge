@@ -19,7 +19,6 @@ const PORT = process.env.PORT || 8080;
 
 /** Server config **/
 app.use(bodyParser.json());
-app.use(util.reportBadJSON())
 app.use(helmet());
 
 /** Express Routers **/
@@ -27,6 +26,9 @@ const apiRouter = require('./routers/api');
 
 /** Install Express Routers **/
 app.use('/api', apiRouter);
+
+/** Express Error Middleware **/
+app.use(util.reportBadJSON());
 
 /** Start Server **/
 app.listen(PORT, (err) => {

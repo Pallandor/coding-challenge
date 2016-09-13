@@ -11,5 +11,5 @@ exports.sanitiseShows = shows => shows.map(show => ({
 exports.sendShows = (res, shows) => {
   res.status(200).json({
     response: shows,
-  })
+  });
 };
