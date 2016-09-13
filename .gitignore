@@ -2,6 +2,7 @@
 logs
 *.log
 .DS_Store
+.thought
 
 # Runtime data
 pids

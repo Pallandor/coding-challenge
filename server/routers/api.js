@@ -6,10 +6,10 @@ const express = require('express');
 const apiRouter = express.Router();
 
 /** Route handlers **/
-const testRoutes = require('../routes/test');
+const tvshowRoutes = require('../routes/tvshow');
 
 /** Install API routes **/
-apiRouter.post('/test', testRoutes.postTest);
-apiRouter.get('/', testRoutes.getTest);
+apiRouter.get('/tvshow', tvshowRoutes.getShows);
+apiRouter.post('/tvshow/filter', tvshowRoutes.postShowsToFilter);
 
 module.exports = apiRouter;
