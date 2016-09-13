@@ -7,7 +7,8 @@
     "lint": "eslint '**/*.js' --ignore-path .gitignore",
     "dev:server": "NODE_ENV=development node server/index.js",
     "dev:test": "npm run lint && NODE_ENV=development mocha test/server/index.js --timeout 5000",
-    "test": "npm run lint && mocha test/server/index.js --timeout 5000"
+    "test": "npm run lint && mocha test/server/index.js --timeout 5000",
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
