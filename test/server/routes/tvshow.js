@@ -3,7 +3,7 @@
 const expect = require('chai').expect;
 
 module.exports = () => {
-  describe('TV Show API Routes', () => {
+  describe('# TV Show Routes', () => {
     describe('# GET /api/tvshow', () => {
       it('should should return an array of all TV shows', done => {
         expect(true).to.equal(true);

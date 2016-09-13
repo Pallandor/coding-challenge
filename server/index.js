@@ -27,7 +27,7 @@ const apiRouter = require('./routers/api');
 /** Install Express Routers **/
 app.use('/api', apiRouter);
 
-/** Express Error Middleware **/
+/** Custom Express Error Middleware **/
 app.use(util.reportBadJSON());
 
 /** Start Server **/
