@@ -36,6 +36,10 @@
     "chai": "3.5.0",
     "eslint": "3.5.0",
     "gulp": "3.9.1",
+    "gulp-mocha": "3.0.1",
+    "gulp-nodemon": "2.1.0",
+    "gulp-plumber": "1.1.0",
+    "gulp-wait": "0.0.2",
     "mocha": "3.0.2",
     "webpack": "1.13.2",
     "webpack-stream": "3.2.0"
