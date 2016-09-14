@@ -17,6 +17,7 @@ node_modules
 
 # Build directory
 build
+build-test
 
 # Editor temporary files
 *~
