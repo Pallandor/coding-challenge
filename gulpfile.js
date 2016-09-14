@@ -3,6 +3,7 @@
 const gulp = require('gulp');
 const mocha = require('gulp-mocha');
 const plumber = require('gulp-plumber');
+const nodemon = require('gulp-nodemon');
 const wait = require('gulp-wait');
 const webpack = require("webpack");
 const webpackStream = require('webpack-stream');
@@ -36,7 +37,7 @@ gulp.task('test-server', done => {
     });
 });
 
-gulp.task('default', ['build-server-test','test-server', 'build-server'], () => {
+gulp.task('default', ['build-server-test','test-server', 'build-server', 'nodemon'], () => {
   gulp.watch('./server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server', 'build-server']);
   gulp.watch('./test/server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server']);
 });
@@ -44,4 +45,27 @@ gulp.task('default', ['build-server-test','test-server', 'build-server'], () => 
 gulp.task('test', ['build-server-test','test-server'], () => {
   gulp.watch('./server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server']);
   gulp.watch('./test/server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server']);
+});
+
+gulp.task('nodemon', cb => {
+  let started = false;
+  return nodemon({
+    script: './build/server.js',
+    watch: ['./test', './build'],
+    ext: 'js'
+  }).on('start', () => {
+    if (!started) {
+      cb();
+      started = true;
+    }
+  })
+  .on('crash', () => {
+    console.log('nodemon.crash');
+  })
+  .on('restart', () => {
+    console.log('nodemon.restart');
+  })
+  .once('quit', () => {
+    process.exit();
+  });
 });

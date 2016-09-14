@@ -187,22 +187,18 @@
 	var config = __webpack_require__(8);
 	var util = __webpack_require__(9);
 	
-	// NOTE: Cast synchronous values to promises too, keep contract of controllers resolving to promises
+	// NOTE: Cast synchronous values to promises too, enforce contract of controllers resolving to promises
 	
-	/** Filter TV shows by predicate if given or default predicate from /routes config **/
 	exports.filterShowsByPredicate = function (shows) {
 	  var predicate = arguments.length <= 1 || arguments[1] === undefined ? config.defaultTvShowFilterPredicate : arguments[1];
 	  return Promise.resolve(shows.filter(predicate));
 	};
 	
-	/** Transform show objects to desired shape, will default to shape defined in /routes config **/
 	exports.sanitiseShows = function (shows) {
 	  var transform = arguments.length <= 1 || arguments[1] === undefined ? config.defaultTvShowSanitiser : arguments[1];
 	  return Promise.resolve(shows.map(transform));
 	};
 	
-	// Pointless validator, objects in payload don't conform to a standard shape :(
-	// NOTE: Potential use in future API extensions though
 	exports.validateShows = function (shows) {
 	  var expectedShowObjShape = arguments.length <= 1 || arguments[1] === undefined ? config.defaultExpectedShowShape : arguments[1];
 	  return Promise.resolve(util.hasDeepEqualKeys(shows, expectedShowObjShape));
