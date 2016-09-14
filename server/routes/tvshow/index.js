@@ -13,8 +13,7 @@ exports.postShowsToFilter = (req, res) => {
   const shows = req.body.payload;
   showController
     .filterShowsByPredicate(shows)
-    .then(filteredShows => showController.sanitiseShows(filteredShows)) // try as func that takes promise?
-    //.then(sanitiseShows)
+    .then(showController.sanitiseShows)
     .then(sanitisedShows => {
       helpers.sendShows(res, sanitisedShows);
     })

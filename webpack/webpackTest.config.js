@@ -1,8 +1,6 @@
 'use strict';
 
-const webpack = require('webpack');
 const path = require('path');
-const fs = require('fs');
 const webpackUtil = require('./util');
 
 module.exports = {
@@ -10,13 +8,13 @@ module.exports = {
   target: 'node',
   output: {
     path: path.join(__dirname, 'build-test'),
-    filename: 'serverSpec.js'
+    filename: 'serverSpec.js',
   },
   module: {
     loaders: [
       {test: /\.js$/, exclude: /node_modules/, loaders: ['babel'] },
-    ]
+    ],
   },
   externals: webpackUtil.createExternalsCompliantNodeModules(),
-  devtool: 'sourcemap'
-}
+  devtool: 'sourcemap',
+};

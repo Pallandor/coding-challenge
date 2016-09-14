@@ -2,7 +2,6 @@
 
 const webpack = require('webpack');
 const path = require('path');
-const fs = require('fs');
 const webpackUtil = require('./webpack/util');
 
 module.exports = {
@@ -10,17 +9,17 @@ module.exports = {
   target: 'node',
   output: {
     path: path.join(__dirname, 'build'),
-    filename: 'server.js'
+    filename: 'server.js',
   },
   module: {
     loaders: [
       {test: /\.js$/, exclude: /node_modules/, loaders: ['babel'] },
-    ]
+    ],
   },
   externals: webpackUtil.createExternalsCompliantNodeModules(),
   plugins: [
     new webpack.BannerPlugin('require("source-map-support").install();',
-                             { raw: true, entryOnly: false })
+                             { raw: true, entryOnly: false }),
   ],
-  devtool: 'sourcemap'
-}
+  devtool: 'sourcemap',
+};
