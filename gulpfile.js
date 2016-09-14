@@ -1,10 +1,15 @@
-const gulp = require('gulp');
-const babel = require('gulp-babel');
+/* eslint-disable */
+'use strict';
 
-gulp.task('default', () => {
-    return gulp.src('server/index.js')
-        .pipe(babel({
-            presets: ['transform-es2015-parameters']
-        }))
-        .pipe(gulp.dest('dist/server'));
-});
+const gulp = require('gulp');
+const webpack = require("webpack");
+const webpackStream = require('webpack-stream');
+const webpackConfig = require('./webpack.config');
+
+gulp.task('build-server', () => {
+  return gulp.src('./server/index.js')
+    .pipe(webpackStream(webpackConfig))
+    .pipe(gulp.dest('build/'));
+  });
+
+gulp.task('default', ['build-server']);

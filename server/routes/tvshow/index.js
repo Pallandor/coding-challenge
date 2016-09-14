@@ -1,7 +1,7 @@
 'use strict';
 
 const helpers = require('./helpers');
-const showController = require('../controllers/api/tvshow');
+const showController = require('../../controllers/api/tvshow');
 
 /** API Route Handlers **/
 
@@ -13,8 +13,8 @@ exports.postShowsToFilter = (req, res) => {
   const shows = req.body.payload;
   showController
     .filterShowsByPredicate(shows)
-    // .then(filteredShows => sanitiseShows(filteredShows)) // try as func that takes promise?
-    .then(sanitiseShows)
+    .then(filteredShows => showController.sanitiseShows(filteredShows)) // try as func that takes promise?
+    //.then(sanitiseShows)
     .then(sanitisedShows => {
       helpers.sendShows(res, sanitisedShows);
     })
