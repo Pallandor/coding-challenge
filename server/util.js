@@ -15,18 +15,18 @@ exports.reportBadJSON = () => (err, req, res, next) => {
 /** Recursive object shape validator by keys **/
 exports.hasDeepEqualKeys = (obj1, obj2) => {
   if (Array.isArray(obj1)) {
-    if (Array.isArray(obj2)){
+    if (Array.isArray(obj2)) {
       if (obj1.length !== obj2.length) {
         return false;
       }
       return obj1.every((obj1El, obj1Key) => {
-        if (typeof obj1El === 'object' && obj1El !== null){
-          if (typeof obj2[obj1Key] === 'object' && obj2[obj1Key] !== null){
+        if (typeof obj1El === 'object' && obj1El !== null) {
+          if (typeof obj2[obj1Key] === 'object' && obj2[obj1Key] !== null) {
             return exports.hasDeepEqualKeys(obj1El, obj2[obj1Key]);
           }
           return false;
         }
-        if (typeof obj2[obj1Key] === 'object' && obj2[obj1Key] !== null){
+        if (typeof obj2[obj1Key] === 'object' && obj2[obj1Key] !== null) {
           return false; // only here if first is not an object
         }
         return true; // arrays hold numeric indices, length is sufficient validation
