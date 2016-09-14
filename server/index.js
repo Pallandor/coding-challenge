@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const winston = require('winston');
 const helmet = require('helmet');
-
 const util = require('./util');
 
 /** Load environment variables from .env file if dev mode **/
