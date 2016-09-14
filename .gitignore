@@ -16,7 +16,7 @@ pids
 node_modules
 
 # Build directory
-dist
+build
 
 # Editor temporary files
 *~
