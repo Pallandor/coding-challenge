@@ -12,13 +12,25 @@ const webpackClientConfig = require('./webpack/webpackClient.config');
 const webpackServerConfig = require('./webpack/webpackServer.config');
 const webpackTestConfig = require('./webpack/webpackTest.config');
 
+gulp.task('clean-server', () => {
+  return del([
+    'build/server/**/*',
+  ]);
+});
+
+gulp.task('clean-client', () => {
+  return del([
+    'build/client/**/*',
+  ]);
+});
+
 gulp.task('build-server', () => {
   return gulp.src('./server/index.js')
     .pipe(webpackStream(webpackServerConfig))
     .pipe(gulp.dest('build/server/'));
 });
 
-gulp.task('build-client', () => {
+gulp.task('build-client', ['clean-client'], () => {
   return gulp.src('./client/index.js')
     .pipe(webpackStream(webpackClientConfig))
     .pipe(gulp.dest('build/client/'));
@@ -51,19 +63,6 @@ gulp.task('test-server', ['build-server-test'], done => {
     });
 });
 
-gulp.task('clean-server', () => {
-  return del([
-    'build/server/**/*',
-  ]);
-});
-
-gulp.task('clean-client', () => {
-  return del([
-    'build/client/**/*',
-  ]);
-});
-
-
 gulp.task('nodemon', ['build-server'], cb => {
   let started = false;
   return nodemon({
@@ -90,6 +89,8 @@ gulp.task('nodemon', ['build-server'], cb => {
 gulp.task('test', ['lint', 'build-server-test', 'test-server']);
 
 gulp.task('default', ['clean-server', 'test', 'build-server']);
+
+gulp.task('client', ['clean-client', 'build-client']);
 
 gulp.task('dev:test', ['lint', 'build-server-test', 'test-server'], () => {
   gulp.watch('./server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server']);

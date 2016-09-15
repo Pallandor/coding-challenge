@@ -10,7 +10,7 @@
     "test": "gulp test",
     "build:client": "gulp build-client && open ./build/client/index.html",
     "postinstall": "npm run build",
-    "build": "gulp build-server",
+    "build": "NODE_ENV=production gulp build-client && gulp build-server",
     "start": "node build/server/index.js"
   },
   "repository": {
@@ -51,7 +51,7 @@
     "react": "15.3.1",
     "react-dom": "15.3.1",
     "webpack": "1.13.2",
-    "webpack-split-by-path": "0.1.0-beta.1",
+    "webpack-split-by-path": "0.0.10",
     "webpack-stream": "3.2.0",
     "winston": "2.2.0"
   }

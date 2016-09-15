@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const winston = require('winston');
 const helmet = require('helmet');
 const util = require('./util');
+const installAppServer = require('./appServer');
 
 /** Load environment variables from .env file if dev mode **/
 if (process.env.NODE_ENV === 'development') {
@@ -18,7 +19,7 @@ const PORT = process.env.PORT || 8080;
 
 /** Server config **/
 app.use(bodyParser.json());
-app.use(helmet());
+// app.use(helmet());
 
 /** Express Routers **/
 const apiRouter = require('./routers/api');
@@ -28,6 +29,9 @@ app.use('/api', apiRouter);
 
 /** Custom Express Error Middleware **/
 app.use(util.reportBadJSON());
+
+/** Serve assets and allow HTML5 mode routing **/
+installAppServer(app);
 
 /** Start Server **/
 app.listen(PORT, (err) => {
