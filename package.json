@@ -7,8 +7,7 @@
     "lint": "eslint '**/*.js' --ignore-path .gitignore",
     "dev:server": "NODE_ENV=development node server/index.js",
     "dev:test": "npm run lint && NODE_ENV=development mocha test/server/index.js --timeout 5000",
-    "test": "npm run lint && gulp test",
-    "deploy": "gcloud app deploy",
+    "test": "gulp test",
     "postinstall": "npm run build",
     "build": "gulp build-server",
     "start": "node build/server.js"
@@ -45,5 +44,8 @@
     "mocha": "3.0.2",
     "webpack": "1.13.2",
     "webpack-stream": "3.2.0"
+  },
+  "devDependencies": {
+    "gulp-eslint": "3.0.1"
   }
 }

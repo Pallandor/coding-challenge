@@ -2,10 +2,11 @@
 
 const del = require('del');
 const gulp = require('gulp');
+const wait = require('gulp-wait');
 const mocha = require('gulp-mocha');
 const plumber = require('gulp-plumber');
 const nodemon = require('gulp-nodemon');
-const wait = require('gulp-wait');
+const eslint = require('gulp-eslint');
 const webpackStream = require('webpack-stream');
 const webpackConfig = require('./webpack.config');
 const webpackTestConfig = require('./webpack/webpackTest.config');
@@ -26,6 +27,13 @@ gulp.task('build-server-test', () => {
     .pipe(gulp.dest('build-test/'));
 });
 
+gulp.task('lint', () => {
+  return gulp.src(['**/*.js', '!node_modules/**', '!build/**', '!build-test/**'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
+
 gulp.task('test-server', ['build-server-test'], done => {
   gulp.src('./build-test/serverSpec.js', {read: false})
     .pipe(plumber())
@@ -41,6 +49,7 @@ gulp.task('clean-server', () => {
     'build/**/*',
   ]);
 });
+
 
 gulp.task('nodemon', ['build-server'], cb => {
   let started = false;
@@ -65,17 +74,17 @@ gulp.task('nodemon', ['build-server'], cb => {
   });
 });
 
-gulp.task('default', ['clean-server', 'build-server-test', 'test-server', 'build-server'], () => {
+gulp.task('default', ['lint', 'clean-server', 'build-server-test', 'test-server', 'build-server'], () => {
   gulp.watch('./server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server', 'build-server']);
   gulp.watch('./test/server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server']);
 });
 
-gulp.task('test', ['build-server-test', 'test-server'], () => {
+gulp.task('test', ['lint', 'build-server-test', 'test-server'], () => {
   gulp.watch('./server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server']);
   gulp.watch('./test/server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server']);
 });
 
-gulp.task('dev', ['clean-server', 'build-server-test', 'test-server', 'build-server', 'nodemon'], () => {
+gulp.task('dev', ['lint', 'clean-server', 'build-server-test', 'test-server', 'build-server', 'nodemon'], () => {
   gulp.watch('./server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server', 'build-server']);
   gulp.watch('./test/server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server']);
 });
