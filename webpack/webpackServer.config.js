@@ -2,10 +2,10 @@
 
 const webpack = require('webpack');
 const path = require('path');
-const webpackUtil = require('./webpack/util');
+const webpackUtil = require('./util');
 
 module.exports = {
-  entry: './server/index.js',
+  entry: path.join(__dirname, '..', 'server/index.js'),
   target: 'node',
   output: {
     path: path.join(__dirname, 'build'),

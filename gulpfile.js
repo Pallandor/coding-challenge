@@ -8,12 +8,13 @@ const plumber = require('gulp-plumber');
 const nodemon = require('gulp-nodemon');
 const eslint = require('gulp-eslint');
 const webpackStream = require('webpack-stream');
-const webpackConfig = require('./webpack.config');
+// const webpackConfig = require('./webpack.config');
+const webpackServerConfig = require('./webpack/webpackServer.config');
 const webpackTestConfig = require('./webpack/webpackTest.config');
 
 gulp.task('build-server', () => {
   return gulp.src('./server/index.js')
-    .pipe(webpackStream(webpackConfig))
+    .pipe(webpackStream(webpackServerConfig))
     .pipe(gulp.dest('build/'));
 });
 
@@ -74,9 +75,9 @@ gulp.task('nodemon', ['build-server'], cb => {
   });
 });
 
-gulp.task('default', ['lint', 'clean-server', 'build-server-test', 'test-server', 'build-server']);
-
 gulp.task('test', ['lint', 'build-server-test', 'test-server']);
+
+gulp.task('default', ['clean-server', 'test', 'build-server']);
 
 gulp.task('dev:test', ['lint', 'build-server-test', 'test-server'], () => {
   gulp.watch('./server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server']);
