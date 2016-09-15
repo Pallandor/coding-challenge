@@ -1,3 +1,10 @@
 language: node_js
 node_js:
 - '6'
+deploy:
+  provider: heroku
+  api_key:
+    secure: OGJC0XC+2yQiEYVC1j1W2qUKOcgL81NnG8zeITS9/gUU7gd1wKU2E3ulDDMrEgsBn81gftafOgdLlzZqybh+TgKsSHABUcU7Izfnpq7GgkA/n5oBFszTPh5oUxILoBOuykamH+uNt1sSxD4M3IpOs/zc6e+Yv5woij2q9I2Dzn4biHtsg5T6BWhiMCY0iRC5cUiUDSX2wTTaUxPobRwKx5r8HDBh0a2PZtlHz2kWPXnNTP/8pcjng6vXuaHipl6PVz66l5lc+VvUILAUuKK1CuBaoC0PGwsNh/sYDvvn57o5WJg/7Q6tx+r3OgCpWZ6dZLvdQfh/iVxcXGunO/fm0R6rJjyBu9VHblWTY177HT8B9vZCjuNBLcEw4Al/yRgYPZ6AVd1bTNN4kmxiWWUzYx5EYWaHxfIWqSOV595erHsh8cHuWAhqhKxUr+avPNmsA0PVq0H1cVGjadFaBG8fMeMoIH50M9SFEKN8iu5wWRshlkOfuRNMc81Vz9efGO7lr+B+UcHPB06saEkT6FUZ9jKn9EFZ1A/NeX0MeqPs81+5pCv3SlAfDXBNTdhbYCESkDseA+b9XTKPZyXzG4PIpTfo8uPoLKsz48kdONTtRY9iy4FRzhQhGsSPksEdvMVyvY7akcz0yYGF9ecDo38lbwEsibpLkn0I6MYhY4uMYHw=
+  app: love-your-tech-stack
+  on:
+    repo: Pallandor/coding-challenge
