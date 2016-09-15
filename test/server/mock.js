@@ -1,6 +1,4 @@
 /* eslint-disable */
-'use strict';
-
 exports.shows = {
     "payload": [
         {

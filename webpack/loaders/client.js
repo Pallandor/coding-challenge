@@ -1,5 +1,3 @@
-'use strict';
-
 exports.js = {
   test: /\.jsx?$/,
   exclude: /node_modules/,
@@ -8,5 +6,5 @@ exports.js = {
 
 exports.json = {
   test: /\.json$/,
-  loader: 'json'
+  loader: 'json',
 };

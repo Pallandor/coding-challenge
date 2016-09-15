@@ -1,10 +1,8 @@
-'use strict';
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const winston = require('winston');
-const helmet = require('helmet');
+// const helmet = require('helmet');
 const util = require('./util');
 const installAppServer = require('./appServer');
 
@@ -19,7 +17,7 @@ const PORT = process.env.PORT || 8080;
 
 /** Server config **/
 app.use(bodyParser.json());
-// app.use(helmet());
+// app.use(helmet()); // may need to modify config
 
 /** Express Routers **/
 const apiRouter = require('./routers/api');

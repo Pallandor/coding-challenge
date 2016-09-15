@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const clientPlugins = require('./plugins/client');
 const clientLoaders = require('./loaders/client');
@@ -26,6 +24,5 @@ module.exports = {
       clientLoaders.json,
       // add css
     ],
-  }
-
+  },
 };

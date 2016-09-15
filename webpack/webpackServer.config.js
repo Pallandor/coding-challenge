@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const serverPlugins = require('./plugins/server');
 const serverLoaders = require('./loaders/server');

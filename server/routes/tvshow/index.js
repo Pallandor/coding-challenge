@@ -1,5 +1,3 @@
-'use strict';
-
 const helpers = require('./helpers');
 const showController = require('../../controllers/api/tvshow');
 

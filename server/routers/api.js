@@ -1,5 +1,3 @@
-'use strict';
-
 /** API Router **/
 
 const express = require('express');

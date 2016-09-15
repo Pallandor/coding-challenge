@@ -1,5 +1,3 @@
-'use strict';
-
 /** Route specific helpers, which are aware of server state e.g. res object.
     So do NOT cast to promises.
 **/

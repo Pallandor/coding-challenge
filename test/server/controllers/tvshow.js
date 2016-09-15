@@ -1,5 +1,3 @@
-'use strict';
-
 const expect = require('chai').expect;
 const showController = require('../../../server/controllers/api/tvshow');
 const mock = require('../mock');

@@ -1,5 +1,3 @@
-'use strict';
-
 /** Server, middleware and general utils **/
 
 /** Express error middleware creator to parse body-parser error objects and report bad JSON **/

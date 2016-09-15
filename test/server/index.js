@@ -1,5 +1,3 @@
-'use strict';
-
 const installRouteTests = require('./routes');
 const installRouteControllerTests = require('./controllers');
 

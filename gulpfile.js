@@ -1,4 +1,5 @@
-'use strict';
+// eslint-disable-next-line
+'use strict'
 
 const del = require('del');
 const gulp = require('gulp');
@@ -87,17 +88,17 @@ gulp.task('nodemon', ['build-server'], cb => {
 });
 
 gulp.task('test', ['lint', 'build-server-test', 'test-server']);
-
-gulp.task('default', ['clean-server', 'test', 'build-server']);
-
 gulp.task('client', ['clean-client', 'build-client']);
+gulp.task('server', ['clean-server', 'test', 'build-server']);
+
+gulp.task('default', ['client', 'server']);
 
 gulp.task('dev:test', ['lint', 'build-server-test', 'test-server'], () => {
   gulp.watch('./server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server']);
   gulp.watch('./test/server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server']);
 });
 
-gulp.task('dev', ['lint', 'clean-server', 'build-server-test', 'test-server', 'build-server', 'nodemon'], () => {
+gulp.task('dev', ['test', 'client', 'server', 'nodemon'], () => {
   gulp.watch('./server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server', 'build-server']);
   gulp.watch('./test/server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server']);
 });
