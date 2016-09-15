@@ -5,14 +5,16 @@ const serverPlugins = require('./plugins/server');
 const serverLoaders = require('./loaders/server');
 const webpackUtil = require('./util');
 
+const devmode = process.env.NODE_ENV !== 'production';
+
 module.exports = {
   entry: path.join(__dirname, '..', 'server/index.js'),
 
   target: 'node',
 
   output: {
-    path: path.join(__dirname, 'build'),
-    filename: 'server.js',
+    path: path.join(__dirname, 'build/server'),
+    filename: 'index.js',
   },
 
   module: {
@@ -26,5 +28,5 @@ module.exports = {
 
   plugins: serverPlugins,
 
-  devtool: 'sourcemap',
+  devtool: !devmode ? 'source-map' : 'inline-source-map',
 };

@@ -15,7 +15,7 @@ const webpackTestConfig = require('./webpack/webpackTest.config');
 gulp.task('build-server', () => {
   return gulp.src('./server/index.js')
     .pipe(webpackStream(webpackServerConfig))
-    .pipe(gulp.dest('build/'));
+    .pipe(gulp.dest('build/server/'));
 });
 
 gulp.task('build-client', () => {
@@ -53,7 +53,13 @@ gulp.task('test-server', ['build-server-test'], done => {
 
 gulp.task('clean-server', () => {
   return del([
-    'build/**/*',
+    'build/server/**/*',
+  ]);
+});
+
+gulp.task('clean-client', () => {
+  return del([
+    'build/client/**/*',
   ]);
 });
 

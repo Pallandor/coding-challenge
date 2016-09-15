@@ -11,7 +11,7 @@
     "build:client": "gulp build-client && open ./build/client/index.html",
     "postinstall": "npm run build",
     "build": "gulp build-server",
-    "start": "node build/server.js"
+    "start": "node build/server/index.js"
   },
   "repository": {
     "type": "git",
