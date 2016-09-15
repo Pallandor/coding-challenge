@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 8080;
 
 /** Server config **/
 app.use(bodyParser.json());
-// app.use(helmet()); // may need to modify config
+// app.use(helmet()); // may need to modify config hm.
 
 /** Express Routers **/
 const apiRouter = require('./routers/api');

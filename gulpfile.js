@@ -100,5 +100,6 @@ gulp.task('dev:test', ['lint', 'build-server-test', 'test-server'], () => {
 
 gulp.task('dev', ['test', 'client', 'server', 'nodemon'], () => {
   gulp.watch('./server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server', 'build-server']);
+  gulp.watch('./client/**/*.js', {debounceDelay: 500}, ['build-client']);
   gulp.watch('./test/server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server']);
 });

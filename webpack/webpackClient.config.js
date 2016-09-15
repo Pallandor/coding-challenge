@@ -12,6 +12,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'build-client'),
     filename: '[name].[chunkhash].js',
+    publicPath: '/',
   },
 
   devtool: !devmode ? 'source-map' : 'inline-source-map',

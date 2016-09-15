@@ -1,15 +1,20 @@
 import React from 'react';
 import { IndexRoute, Route } from 'react-router';
 
-import Test from '../components/TestComponent';
+import App from '../components/App';
+import HomePage from '../container/HomePage';
+import ShowListings from '../components/ShowListings';
+import ShowExcerpt from '../components/ShowExcerpt';
+import About from '../components/About';
+import Github from '../components/Github';
 
 export default (
-<Route path="/" component={ Test }>
-  <Route component={ Test }>
-    <IndexRoute component={ Test } />
-    <Route path="articles/:id" component={ Test } />
+<Route path="/" component={ App }>
+  <Route component={ HomePage }>
+    <IndexRoute component={ ShowListings } />
+    <Route path="shows/:id" component={ ShowExcerpt } />
   </Route>
-  <Route path="about" component={ Test } />
-  <Route path="contact" component={ Test } />
+  <Route path="about" component={ About } />
+  <Route path="github" component={ Github } />
 </Route>
 );
