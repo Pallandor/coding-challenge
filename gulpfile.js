@@ -74,10 +74,7 @@ gulp.task('nodemon', ['build-server'], cb => {
   });
 });
 
-gulp.task('default', ['lint', 'clean-server', 'build-server-test', 'test-server', 'build-server'], () => {
-  gulp.watch('./server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server', 'build-server']);
-  gulp.watch('./test/server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server']);
-});
+gulp.task('default', ['lint', 'clean-server', 'build-server-test', 'test-server', 'build-server']);
 
 gulp.task('test', ['lint', 'build-server-test', 'test-server']);
 
