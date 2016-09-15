@@ -79,7 +79,9 @@ gulp.task('default', ['lint', 'clean-server', 'build-server-test', 'test-server'
   gulp.watch('./test/server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server']);
 });
 
-gulp.task('test', ['lint', 'build-server-test', 'test-server'], () => {
+gulp.task('test', ['lint', 'build-server-test', 'test-server']);
+
+gulp.task('dev:test', ['lint', 'build-server-test', 'test-server'], () => {
   gulp.watch('./server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server']);
   gulp.watch('./test/server/**/*.js', {debounceDelay: 500}, ['build-server-test', 'test-server']);
 });
