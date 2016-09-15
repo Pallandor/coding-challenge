@@ -1,14 +1,15 @@
 import React from 'react';
 
-const ShowList = ({children}) => (
+const ShowList = ({shows}) => (
   <div>
     <h3>This is a ShowList Component</h3>
-    {children}
+    <h5>Below are children AND shows!</h5>
+    <pre>{JSON.stringify(shows)}</pre>
   </div>
 );
 
 ShowList.propTypes = {
-  children: React.PropTypes.node,
+  shows: React.PropTypes.array,
 };
 
 export default ShowList;

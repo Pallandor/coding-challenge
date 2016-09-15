@@ -1,14 +1,10 @@
 import React from 'react';
 
-const ShowExcerpt = ({children}) => (
+const ShowExcerpt = () => (
   <div>
     <h3>This is a ShowExcerpt Component</h3>
-    {children}
+    <pre>Params.id is: {this.props.params.id}</pre>
   </div>
 );
-
-ShowExcerpt.propTypes = {
-  children: React.PropTypes.node,
-};
 
 export default ShowExcerpt;
