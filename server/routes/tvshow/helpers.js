@@ -21,7 +21,7 @@ const mockResponse = {
             "episodeCount": 3,
             "genre": "Reality",
             "image": {
-                "showImage": "http://mybeautifulcatchupservice.com/img/shows/16KidsandCounting1280.jpg"
+                "showImage": "http://catchup.ninemsn.com.au/img/jump-in/shows/16KidsandCounting1280.jpg"
             },
             "language": "English",
             "nextEpisode": null,
@@ -47,12 +47,12 @@ const mockResponse = {
             "episodeCount": 2,
             "genre": "Reality",
             "image": {
-                "showImage": "http://mybeautifulcatchupservice.com/img/shows/TheTaste1280.jpg"
+                "showImage": "http://catchup.ninemsn.com.au/img/jump-in/shows/TheTaste1280.jpg"
             },
             "language": "English",
             "nextEpisode": {
                 "channel": null,
-                "channelLogo": "http://mybeautifulcatchupservice.com/img/player/logo_go.gif",
+                "channelLogo": "http://catchup.ninemsn.com.au/img/jump-in/player/logo_go.gif",
                 "date": null,
                 "html": "<br><span class=\"visit\">Visit the Official Website</span></span>",
                 "url": "http://go.ninemsn.com.au/"
@@ -74,7 +74,7 @@ const mockResponse = {
             "episodeCount": 24,
             "genre": "Action",
             "image": {
-                "showImage": "http://mybeautifulcatchupservice.com/img/shows/Thunderbirds_1280.jpg"
+                "showImage": "http://catchup.ninemsn.com.au/img/jump-in/shows/Thunderbirds_1280.jpg"
             },
             "language": "English",
             "nextEpisode": null,
@@ -110,7 +110,7 @@ const mockResponse = {
             "episodeCount": 4,
             "genre": "Kids",
             "image": {
-                "showImage": "http://mybeautifulcatchupservice.com/img/shows/ScoobyDoo1280.jpg"
+                "showImage": "http://catchup.ninemsn.com.au/img/jump-in/shows/ScoobyDoo1280.jpg"
             },
             "language": "English",
             "nextEpisode": null,
@@ -131,7 +131,7 @@ const mockResponse = {
             "episodeCount": 2,
             "genre": "Reality",
             "image": {
-                "showImage": "http://mybeautifulcatchupservice.com/img/shows/ToyHunter1280.jpg"
+                "showImage": "http://catchup.ninemsn.com.au/img/jump-in/shows/ToyHunter1280.jpg"
             },
             "language": "English",
             "nextEpisode": null,
@@ -152,7 +152,7 @@ const mockResponse = {
             "episodeCount": 1,
             "genre": "Documentary",
             "image": {
-                "showImage": "http://mybeautifulcatchupservice.com/img/shows/Worlds1280.jpg"
+                "showImage": "http://catchup.ninemsn.com.au/img/jump-in/shows/Worlds1280.jpg"
             },
             "language": "English",
             "nextEpisode": null,
@@ -173,12 +173,12 @@ const mockResponse = {
             "episodeCount": 0,
             "genre": "Comedy",
             "image": {
-                "showImage": "http://mybeautifulcatchupservice.com/img/shows/TwoandahHalfMen_V2.jpg"
+                "showImage": "http://catchup.ninemsn.com.au/img/jump-in/shows/TwoandahHalfMen_V2.jpg"
             },
             "language": "English",
             "nextEpisode": {
                 "channel": null,
-                "channelLogo": "http://mybeautifulcatchupservice.com/img/player/Ch9_new_logo.gif",
+                "channelLogo": "http://catchup.ninemsn.com.au/img/jump-in/player/Ch9_new_logo.gif",
                 "date": null,
                 "html": "Next episode airs: <span> 10:00pm Monday on<br><span class=\"visit\">Visit the Official Website</span></span>",
                 "url": "http://channelnine.ninemsn.com.au/twoandahalfmen/"
@@ -196,12 +196,12 @@ const mockResponse = {
             "episodeCount": 1,
             "genre": "Action",
             "image": {
-                "showImage": "http://mybeautifulcatchupservice.com/img/shows/TheOriginals1280.jpg"
+                "showImage": "http://catchup.ninemsn.com.au/img/jump-in/shows/TheOriginals1280.jpg"
             },
             "language": "English",
             "nextEpisode": {
                 "channel": null,
-                "channelLogo": "http://mybeautifulcatchupservice.com/img/player/logo_go.gif",
+                "channelLogo": "http://catchup.ninemsn.com.au/img/jump-in/player/logo_go.gif",
                 "date": null,
                 "html": "<br><span class=\"visit\">Visit the Official Website</span></span>",
                 "url": "http://go.ninemsn.com.au/"
@@ -223,12 +223,12 @@ const mockResponse = {
             "episodeCount": 0,
             "genre": "Reality",
             "image": {
-                "showImage": "http://mybeautifulcatchupservice.com/img/shows/AGT.jpg"
+                "showImage": "http://catchup.ninemsn.com.au/img/jump-in/shows/AGT.jpg"
             },
             "language": "English",
             "nextEpisode": {
                 "channel": null,
-                "channelLogo": "http://mybeautifulcatchupservice.com/img/player/Ch9_new_logo.gif",
+                "channelLogo": "http://catchup.ninemsn.com.au/img/jump-in/player/Ch9_new_logo.gif",
                 "date": null,
                 "html": "Next episode airs:<span>6:30pm Sunday on<br><span class=\"visit\">Visit the Official Website</span></span>",
                 "url": "http://agt.ninemsn.com.au"
