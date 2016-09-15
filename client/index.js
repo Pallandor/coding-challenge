@@ -1,11 +1,7 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-//
-// ReactDOM.render(
-//   <Provider store={ store }>
-//     <Router history={ history }>
-//       {routes}
-//     </Router>
-//   </Provider>,
-//   document.getElementById('root')
-// );
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+ReactDOM.render(
+  <div><h1>This is a React component</h1></div>,
+  document.getElementById('root')
+);

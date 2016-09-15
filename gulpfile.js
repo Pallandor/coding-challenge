@@ -8,7 +8,7 @@ const plumber = require('gulp-plumber');
 const nodemon = require('gulp-nodemon');
 const eslint = require('gulp-eslint');
 const webpackStream = require('webpack-stream');
-// const webpackConfig = require('./webpack.config');
+const webpackClientConfig = require('./webpack/webpackClient.config');
 const webpackServerConfig = require('./webpack/webpackServer.config');
 const webpackTestConfig = require('./webpack/webpackTest.config');
 
@@ -16,6 +16,12 @@ gulp.task('build-server', () => {
   return gulp.src('./server/index.js')
     .pipe(webpackStream(webpackServerConfig))
     .pipe(gulp.dest('build/'));
+});
+
+gulp.task('build-client', () => {
+  return gulp.src('./client/index.js')
+    .pipe(webpackStream(webpackClientConfig))
+    .pipe(gulp.dest('build/client/'));
 });
 
 gulp.task('watch-server', () => {

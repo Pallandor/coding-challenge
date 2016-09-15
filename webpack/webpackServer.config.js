@@ -1,25 +1,30 @@
 'use strict';
 
-const webpack = require('webpack');
 const path = require('path');
+const serverPlugins = require('./plugins/server');
+const serverLoaders = require('./loaders/server');
 const webpackUtil = require('./util');
 
 module.exports = {
   entry: path.join(__dirname, '..', 'server/index.js'),
+
   target: 'node',
+
   output: {
     path: path.join(__dirname, 'build'),
     filename: 'server.js',
   },
+
   module: {
     loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loaders: ['babel'] },
+      serverLoaders.js,
+      // add loaders here
     ],
   },
+
   externals: webpackUtil.createExternalsCompliantNodeModules(),
-  plugins: [
-    new webpack.BannerPlugin('require("source-map-support").install();',
-                             { raw: true, entryOnly: false }),
-  ],
+
+  plugins: serverPlugins,
+
   devtool: 'sourcemap',
 };
