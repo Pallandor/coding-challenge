@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint '**/*.js' --ignore-path .gitignore",
-    "dev:server": "NODE_ENV=development node server/index.js",
-    "dev:test": "npm run lint && NODE_ENV=development mocha test/server/index.js --timeout 5000",
+    "dev:server": "NODE_ENV=development gulp dev",
+    "dev:test": "gulp dev:test",
     "test": "gulp test",
     "postinstall": "npm run build",
     "build": "gulp build-server",
@@ -43,9 +43,7 @@
     "gulp-wait": "0.0.2",
     "mocha": "3.0.2",
     "webpack": "1.13.2",
-    "webpack-stream": "3.2.0"
-  },
-  "devDependencies": {
+    "webpack-stream": "3.2.0",
     "gulp-eslint": "3.0.1"
   }
 }
