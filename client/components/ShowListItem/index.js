@@ -1,12 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-// const ShowListItem = ({show}) =>  (
-//   <a href={show.link || defaults.link} className={styles.link}>
-//     <div className={styles.image} style={styles.createBackgroundStylesObj(show)} />
-//   </a>
-// );
-
 const ShowListItem = ({slug, imageLink}) => (
   <Link className={styles.link} to={`show/${slug}`}>
     <div className={styles.image} style={styles.createBackgroundStylesObj(imageLink)} />
@@ -30,14 +24,5 @@ ShowListItem.propTypes = {
   slug: React.PropTypes.string,
   imageLink: React.PropTypes.string,
 };
-
-// ShowListItem.propTypes = {
-//   show: React.PropTypes.shape({
-//     link: React.PropTypes.string,
-//     image: React.PropTypes.shape({
-//       showImage: React.PropTypes.string,
-//     }),
-//   }),
-// };
 
 export default ShowListItem;
