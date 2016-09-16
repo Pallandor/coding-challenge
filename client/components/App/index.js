@@ -6,7 +6,6 @@ const App = ({children}) => (
   <div>
     <NavBar />
     {children}
-    <Footer />
   </div>
 );
 
