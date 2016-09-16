@@ -2,19 +2,17 @@ import React from 'react';
 
 const ShowListItem = ({show}) =>  (
   <a href={show.link || defaults.link} className={styles.link}>
-    <div
-      className={styles.image}
-      style={{
-        background: `url(${show.image && show.image.showImage || defaults.image}) no-repeat center center`,
-        backgroundSize: 'cover',
-      }}
-    />
+    <div className={styles.image} style={styles.createBackgroundStylesObj(show)} />
   </a>
 );
 
 const styles = {
   link: 'fl w-50 w-25-l link overflow-hidden',
-  image: 'grow aspect-ratio--4x6',
+  image: 'vh-25 grow',
+  createBackgroundStylesObj: (show) => ({
+    background: `url(${show.image && show.image.showImage || defaults.image}) no-repeat center center`,
+    backgroundSize: 'cover',
+  }),
 };
 
 const defaults = {
