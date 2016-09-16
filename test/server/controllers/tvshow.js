@@ -10,15 +10,18 @@ module.exports = () => {
         expect(expectedPromise.then).to.be.a('function');
         done();
       });
-      it('should resolve to a filtered array of TV shows', done => {
-        expect(true).to.equal(true);
-        expect(true).to.equal(true);
-        done();
+      it('should resolve to a filtered array of TV shows using default filter', done => {
+        showController.filterShowsByPredicate(mock.shows.payload)
+          .then(filteredShows => {
+            expect(filteredShows).to.deep.equal(mock.expectedFilteredShows);
+            done();
+          });
       });
     });
     describe('# sanitiseShows', () => {
       it('should return a valid promise', done => {
-        expect(true).to.equal(true);
+        const expectedPromise = showController.sanitiseShows(mock.expectedFilteredShows);
+        expect(expectedPromise.then).to.be.a('function');
         done();
       });
       it('should resolve to an array of transformed tv shows', done => {
