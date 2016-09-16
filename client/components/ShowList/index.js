@@ -1,13 +1,15 @@
 import React from 'react';
 
 import ShowListItem from '../ShowListItem';
+import { cleanSlugForRouting } from '../../util';
 
 const ShowList = ({shows}) => {
   const renderShowList = showArr =>
     showArr.map((show, ind) => (
       <ShowListItem
         key={ind}
-        show={show}
+        slug={cleanSlugForRouting(show.slug)}
+        imageLink={show.image && show.image.showImage || ''}
       />
     ));
   return (

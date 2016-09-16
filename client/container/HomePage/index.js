@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import ShowList from '../../components/ShowList';
 import { fetchShows } from '../../actions/shows';
 import { getShows } from '../../reducers/shows';
 import { getShowsLoadingState } from '../../reducers/ui/shows';
 import Loading from '../../components/Loading';
+import * as util from '../../util';
 
 const mapStoreToProps = store => ({
   shows: getShows(store),
@@ -27,9 +27,22 @@ class HomePage extends Component {
   }
 
   _renderHomePage() {
+    const { children, shows } = this.props;
+    let propsToInject = { shows };
+    if (util.containsRoute(this.props.location.pathname, 'show/')) {
+      if (!this.props.shows.length) {
+        this.props.fetchShows();
+      } else {
+      const currentShow = this.props.shows.find(show => show.slug === `show/${this.props.params.slug}`);
+      propsToInject = {
+          title: currentShow.title,
+          // add props for ShowPage
+        };
+      }
+    }
     return (
       <div>
-        <ShowList shows={this.props.shows} />
+        {util.injectReactChildrenWithProps(children, propsToInject)}
       </div>
     );
   }
@@ -40,6 +53,9 @@ class HomePage extends Component {
 }
 
 HomePage.propTypes = {
+  location: React.PropTypes.object,
+  children: React.PropTypes.node,
+  params: React.PropTypes.object,
   shows: React.PropTypes.array,
   isLoadingShows: React.PropTypes.bool,
   fetchShows: React.PropTypes.func,
