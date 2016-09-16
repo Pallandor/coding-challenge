@@ -33,8 +33,8 @@ class HomePage extends Component {
       if (!this.props.shows.length) {
         this.props.fetchShows();
       } else {
-      const currentShow = this.props.shows.find(show => show.slug === `show/${this.props.params.slug}`);
-      propsToInject = {
+        const currentShow = this.props.shows.find(show => show.slug === `show/${this.props.params.slug}`);
+        propsToInject = {
           title: currentShow.title,
           // add props for ShowPage
         };
