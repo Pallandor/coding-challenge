@@ -36,7 +36,9 @@ class HomePage extends Component {
         const currentShow = this.props.shows.find(show => show.slug === `show/${this.props.params.slug}`);
         propsToInject = {
           title: currentShow.title,
-          // add props for ShowPage
+          tvChannel: currentShow.tvChannel,
+          description: currentShow.description,
+          imageLink: currentShow.image && currentShow.image.showImage,
         };
       }
     }

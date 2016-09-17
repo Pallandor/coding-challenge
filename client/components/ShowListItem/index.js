@@ -11,13 +11,13 @@ const styles = {
   link: 'fl w-50 w-25-l link overflow-hidden',
   image: 'vh-25 grow',
   createBackgroundStylesObj: (imageLink) => ({
-    background: `url(${imageLink || defaults.image}) no-repeat center center`,
+    background: `url(${imageLink || defaults.imageLink}) no-repeat center center`,
     backgroundSize: 'cover',
   }),
 };
 
 const defaults = {
-  image: 'http://mi9.com.au/img/home/9Now_rotating.jpg',
+  imageLink: 'http://mi9.com.au/img/home/9Now_rotating.jpg',
 };
 
 ShowListItem.propTypes = {
