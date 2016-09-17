@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const winston = require('winston');
-// const helmet = require('helmet');
+const cors = require('cors');
 const util = require('./util');
 const installAppServer = require('./appServer');
 
@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 8080;
 
 /** Server config **/
 app.use(bodyParser.json());
-// app.use(helmet()); // may need to modify config hm.
+app.use(cors());
 
 /** Express Routers **/
 const apiRouter = require('./routers/api');
