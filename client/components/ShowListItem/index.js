@@ -9,7 +9,7 @@ const ShowListItem = ({slug, imageLink}) => (
 
 const styles = {
   link: 'fl w-50 w-25-l link overflow-hidden',
-  image: 'vh-25 grow',
+  image: 'vh-25 grow dim',
   createBackgroundStylesObj: (imageLink) => ({
     background: `url(${imageLink || defaults.imageLink}) no-repeat center center`,
     backgroundSize: 'cover',
