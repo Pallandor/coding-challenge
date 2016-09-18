@@ -2,7 +2,7 @@ import React from 'react';
 import { IndexRoute, Route } from 'react-router';
 
 import App from '../components/App';
-import HomePage from '../container/HomePage';
+import HomePage from '../containers/HomePage';
 import ShowList from '../components/ShowList';
 import ShowPage from '../components/ShowPage';
 import About from '../components/About';

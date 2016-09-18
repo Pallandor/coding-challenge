@@ -20,26 +20,41 @@ class HomePage extends Component {
   constructor() {
     super();
     this._renderHomePage = this._renderHomePage.bind(this);
+    this._viewingShowPage = this._viewingShowPage.bind(this);
+    this._showsInformationWasFetched = this._showsInformationWasFetched.bind(this);
+    this._createPropsToInjectForShowPage = this._createPropsToInjectForShowPage.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchShows();
   }
 
+  _viewingShowPage() {
+    return util.containsRoute(this.props.location.pathname, 'show/');
+  }
+
+  _showsInformationWasFetched() {
+    return this.props.shows.length;
+  }
+
+  _createPropsToInjectForShowPage() {
+    const currentShow = this.props.shows.find(show => show.slug === `show/${this.props.params.slug}`);
+    return {
+      title: currentShow.title,
+      tvChannel: currentShow.tvChannel,
+      description: currentShow.description,
+      imageLink: currentShow.image && currentShow.image.showImage,
+    };
+  }
+
   _renderHomePage() {
     const { children, shows } = this.props;
     let propsToInject = { shows };
-    if (util.containsRoute(this.props.location.pathname, 'show/')) {
-      if (!this.props.shows.length) {
+    if (this._viewingShowPage()) {
+      if (!this._showsInformationWasFetched()) {
         this.props.fetchShows();
       } else {
-        const currentShow = this.props.shows.find(show => show.slug === `show/${this.props.params.slug}`);
-        propsToInject = {
-          title: currentShow.title,
-          tvChannel: currentShow.tvChannel,
-          description: currentShow.description,
-          imageLink: currentShow.image && currentShow.image.showImage,
-        };
+        propsToInject = this._createPropsToInjectForShowPage();
       }
     }
     return (
