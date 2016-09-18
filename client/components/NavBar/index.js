@@ -3,7 +3,9 @@ import { Link } from 'react-router';
 
 const NavBar = () => (
   <nav className={styles.nav}>
-    <Link className={styles.leftLink} to={'/'}>Home</Link>
+    <Link className={styles.leftLink} to={'/'}>
+      <img className={styles.leftLink} src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Nine-Network-Logo.svg/500px-Nine-Network-Logo.svg.png" />
+    </Link>
     <div className={styles.rightContainer}>
       <Link className={styles.rightLink} to={'/'}>TV Shows</Link>
       <Link className={styles.rightLink} to={'about'}>About</Link>
