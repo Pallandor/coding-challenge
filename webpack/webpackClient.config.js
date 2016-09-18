@@ -23,6 +23,7 @@ module.exports = {
     loaders: [
       clientLoaders.js,
       clientLoaders.json,
+      clientLoaders.css,
       // add css
     ],
   },

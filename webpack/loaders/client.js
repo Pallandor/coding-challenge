@@ -8,3 +8,8 @@ exports.json = {
   test: /\.json$/,
   loader: 'json',
 };
+
+exports.css = {
+  test: /\.css$/,
+  loader: 'style-loader!css-loader',
+};

@@ -1,8 +1,10 @@
 import React from 'react';
+import Loading from '../Loading';
 
 const About = () => (
   <div>
     <h3>This is the About Component</h3>
+    <Loading />
   </div>
 );
 
