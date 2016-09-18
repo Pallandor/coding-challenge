@@ -17,8 +17,15 @@ const _getMiddleware = () => {
   return applyMiddleware(...middleware);
 };
 
-const _addReduxDevTools = () =>
-  window.devToolsExtension ? window.devToolsExtension() : f => f;
+const _getEnhancers = () => {
+  const enhancers = [];
+
+  if (__DEV__ && window.devToolsExtension) {
+    enhancers.push(window.devToolsExtension());
+  }
+
+  return enhancers;
+};
 
 const configureStore = initialState => {
   const store = createStore(
@@ -26,7 +33,7 @@ const configureStore = initialState => {
     initialState,
     compose(
       _getMiddleware(),
-      _addReduxDevTools()
+      ..._getEnhancers()
     ));
   return store;
 };
