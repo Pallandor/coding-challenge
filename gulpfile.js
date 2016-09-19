@@ -4,7 +4,7 @@
 const del = require('del');
 const gulp = require('gulp');
 const wait = require('gulp-wait');
-const mocha = require('gulp-mocha');
+const mocha = require('gulp-spawn-mocha');
 const plumber = require('gulp-plumber');
 const nodemon = require('gulp-nodemon');
 const eslint = require('gulp-eslint');
@@ -54,13 +54,16 @@ gulp.task('lint', () => {
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('test-server', ['build-server-test'], done => {
+gulp.task('test-server', ['build-server-test'], () => {
   gulp.src('./build-test/serverSpec.js', {read: false})
     .pipe(plumber())
     .pipe(wait(1500))
     .pipe(mocha())
-    .on('end', () => {
-      done();
+    .once('error', () => {
+      process.exit(1);
+    })
+    .once('end', () => {
+      process.exit();
     });
 });
 

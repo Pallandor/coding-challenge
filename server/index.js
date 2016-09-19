@@ -32,12 +32,14 @@ app.use(util.reportBadJSON());
 installAppServer(app);
 
 /** Start Server **/
-app.listen(PORT, (err) => {
-  if (err) {
-    winston.error(err);
-    return;
-  }
-  winston.info(`Listening on port ${PORT}`);
-});
+if (!module.parent) {
+  app.listen(PORT, (err) => {
+    if (err) {
+      winston.error(err);
+      return;
+    }
+    winston.info(`Listening on port ${PORT}`);
+  });
+}
 
 module.exports = app;
