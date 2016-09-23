@@ -15,4 +15,4 @@ module.exports = app => {
 // TODO: Test that '/client/* allows for n-depth entries e.g client/whatever/where/will/this/go';
 // so always reserves the html. client side handles rerouting when script initialises in browser
 
-// TODO: Replace process.cwd with dirname or relative path, no longer required! 
+// TODO: Replace process.cwd with dirname or relative path, no longer required!

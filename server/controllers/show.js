@@ -6,21 +6,25 @@ const config = require('./config');
 /** Show Controllers
     - Decoupled from knowledge of Server/API service
     - Define default values/behaviours from Controllers config
-    - Enforce contract of Controllers always returning promises
+    - Enforce contract of Controllers always returning Promises
  **/
 
-/** Filters shows using a given predicate/test function, otherwise
-    reverts to a default test if none provided
+/** Accepts a shows array, filters the array using a default predicate/test
+    function and returns a Promise that resolves with the filtered shows array.
+    Propogates error message up the Promise-chain if 'shows' is not an array.
 **/
- exports.filterShows = (shows, predicate) => {
-   const filterPredicate = predicate || config.defaultShowFilterPredicate;
-   return Promise.resolve(shows.filter())
- };
+exports.filterShowsDefault = shows =>
+  new Promise((resolve, reject) => {
+    if (!Array.isArray(shows)) reject(config.showsNotArrayError);
+    resolve(shows.filter(config.defaultShowFilterPredicate));
+  });
 
-/** Transforms shows according to a provided Show object transformer
-    function, otherwise reverts to default transformer if none provided.
+/** Accepts a shows array, transforms the array using a default show object
+    transformer function and returns a Promise that resolves with the array
+    of transformed shows. Propogates error if 'shows' is not an array.
 **/
- exports.transformShows = (shows, transform) => {
-   const showTransform = transform || config.defaultShowTransform;
-   return Promise.resolve(shows.map(showTransform));
- };
+ exports.transformShowsDefault = shows =>
+  new Promise((resolve, reject) => {
+    if (!Array.isArray(shows)) reject(config.showsNotArrayError);
+    resolve(shows.map(config.defaultShowTransform));
+  });

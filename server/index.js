@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const { reportBadJSON } = require('./customMiddleware');
+const customWare = require('./customMiddleware');
 const installAppServer = require('./appServer');
 
 /** Load environment variables from .env file if dev mode **/
@@ -24,10 +24,11 @@ app.use(cors());
 const showHandler = require('./routes/showHandler');
 
 /** Install Route Handlers **/
-app.use('/', showHandler);
+app.get('/', showHandler.getShows);
+app.post('/', showHandler.filterShows);
 
 /** Custom Express Error Middleware **/
-app.use(reportBadJSON());
+app.use(customWare.reportBadJSON());
 
 /** Serve assets and allow HTML5 mode routing **/
 installAppServer(app);

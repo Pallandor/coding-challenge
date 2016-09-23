@@ -4,7 +4,7 @@
 
 /** Provides a default predicate/filter test that accepts a Show object
     and returns a truthy value if DRM is set to true and episode Count
-    is positive (>0), otherwise returns falsy value (0); 
+    is positive (>0), otherwise returns falsy value (0);
 **/
 exports.defaultShowFilterPredicate = show => show.drm && show.episodeCount;
 
@@ -17,3 +17,7 @@ exports.defaultShowTransform = show => ({
   slug: show.slug || null,
   title: show.title || null,
 });
+
+exports.showsNotArrayError =
+  'Shows was not a valid array. Please check to ensure an array of shows is ' +
+  'being included in the relevant object';

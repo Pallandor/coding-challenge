@@ -13,5 +13,10 @@ exports.sendShows = (res, shows) =>
     response: shows,
   });
 
-exports.defineFilter = possibleFilter =>
-  typeof possibleFilter === 'function' ? possibleFilter : null;
+/** Helper to standarise Error messages shape across
+    Controllers/Routes
+**/
+exports.sendError = (res, err) =>
+  res.status(500).json({
+    error: err,
+  });

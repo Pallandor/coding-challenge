@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 'use strict'
 
 const del = require('del');
@@ -25,12 +24,6 @@ gulp.task('clean-client', () => {
   ]);
 });
 
-gulp.task('build-server', () => {
-  return gulp.src('./server/index.js')
-    .pipe(webpackStream(webpackServerConfig))
-    .pipe(gulp.dest('build/server/'));
-});
-
 gulp.task('build-client', ['clean-client'], () => {
   return gulp.src('./client/index.js')
     .pipe(webpackStream(webpackClientConfig))
@@ -41,12 +34,6 @@ gulp.task('watch-server', () => {
   gulp.watch('./server/**/*.*', ['build-server']);
 });
 
-gulp.task('build-server-test', () => {
-  return gulp.src('./test/server/index.js')
-    .pipe(webpackStream(webpackTestConfig))
-    .pipe(gulp.dest('build-test/'));
-});
-
 gulp.task('lint', () => {
   return gulp.src(['**/*.js', '!node_modules/**', '!build/**', '!build-test/**'])
     .pipe(eslint())
@@ -54,7 +41,7 @@ gulp.task('lint', () => {
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('test-server', ['build-server-test'], () => {
+gulp.task('test-server', () => {
   gulp.src('./build-test/serverSpec.js', {read: false})
     .pipe(plumber())
     .pipe(wait(1500))
