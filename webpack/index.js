@@ -10,7 +10,7 @@ module.exports = {
   },
 
   output: {
-    path: path.join(__dirname, 'build-client'),
+    path: path.join(__dirname, 'build'),
     filename: '[name].[chunkhash].js',
     publicPath: '/',
   },
@@ -24,7 +24,7 @@ module.exports = {
       clientLoaders.js,
       clientLoaders.json,
       clientLoaders.css,
-      // add css
+      // additional loaders
     ],
   },
 };

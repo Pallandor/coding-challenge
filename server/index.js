@@ -24,8 +24,8 @@ app.use(cors());
 const showHandler = require('./routes/showHandler');
 
 /** Install Route Handlers **/
-app.get('/', showHandler.getShows);
 app.post('/', showHandler.filterShows);
+app.get('/shows', showHandler.getShows);
 
 /** Custom Express Error Middleware **/
 app.use(customWare.reportBadJSON());
