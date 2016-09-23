@@ -1,9 +1,10 @@
+'use strict';
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
-const winston = require('winston');
 const cors = require('cors');
-const util = require('./util');
+const { reportBadJSON } = require('./customMiddleware');
 const installAppServer = require('./appServer');
 
 /** Load environment variables from .env file if dev mode **/
@@ -19,14 +20,14 @@ const PORT = process.env.PORT || 8080;
 app.use(bodyParser.json());
 app.use(cors());
 
-/** Express Routers **/
-const apiRouter = require('./routers/api');
+/** Express Route Handlers **/
+const showHandler = require('./routes/showHandler');
 
-/** Install Express Routers **/
-app.use('/api', apiRouter);
+/** Install Route Handlers **/
+app.use('/', showHandler);
 
 /** Custom Express Error Middleware **/
-app.use(util.reportBadJSON());
+app.use(reportBadJSON());
 
 /** Serve assets and allow HTML5 mode routing **/
 installAppServer(app);
@@ -35,10 +36,10 @@ installAppServer(app);
 if (!module.parent) {
   app.listen(PORT, (err) => {
     if (err) {
-      winston.error(err);
+      console.error(err);
       return;
     }
-    winston.info(`Listening on port ${PORT}`);
+    console.log(`Listening on port ${PORT}`);
   });
 }
 

@@ -1,18 +1,6 @@
-/* eslint-disable */
+'use strict';
 
-/** Route specific helpers, which are aware of server state e.g. res object.
-    So do NOT cast to promises.
-**/
-
-exports.testResponse = res => res.status(200).json(mockResponse);
-
-exports.sendShows = (res, shows) => {
-  res.status(200).json({
-    response: shows,
-  });
-};
-
-const mockResponse = {
+module.exports = {
     "payload": [
         {
             "country": "UK",
