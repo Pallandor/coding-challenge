@@ -4,14 +4,12 @@
   "description": "**Technical Test (Nine Entertainment Co/Digital)** Node.js coding challenge",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint '**/*.js' --ignore-path .gitignore",
-    "dev:server": "NODE_ENV=development gulp dev",
-    "dev:test": "gulp dev:test",
+    "lint": "gulp lint",
+    "dev": "NODE_ENV=development gulp dev",
     "test": "gulp test",
-    "dev:client": "gulp client",
     "postinstall": "npm run build",
-    "build": "NODE_ENV=production gulp build-client && gulp build-server",
-    "start": "node build/server/index.js"
+    "build": "NODE_ENV=production gulp",
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
