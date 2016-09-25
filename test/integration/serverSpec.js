@@ -71,6 +71,39 @@ describe('# API Integration Test Suite', () => {
         })
         .expect(200, done);
     });
+    /** Test-case below is for response to malformed JSON object on '/' POST route
+        only, according to mi9 Challenge spec. However, custom error-handling
+        Express middleware is catch-all, so theoretically could extend to
+        all existing route tests.
+    **/
+    it('should return error with status 400 if malformed JSON object is passed', done => {
+      request(app)
+        .post('/')
+        .type('json')
+        .send(mock['/'].post.requestMalformedJSON)
+        .expect('Content-Type', /json/)
+        .expect(res => {
+          expect(res.body).to.be.an('object');
+          expect(res.body).to.have.property('error');
+          expect(res.body.error).to.be.a('string');
+          expect(res.body).to.deep.equal(mock['/'].post.expectedResponseMalformedJSON);
+        })
+        .expect(400, done);
+    });
+    it('should return error with status 500 if shows array is not included', done => {
+      request(app)
+        .post('/')
+        .type('json')
+        .send(mock['/'].post.requestMissingShowsArray)
+        .expect('Content-Type', /json/)
+        .expect(res => {
+          expect(res.body).to.be.an('object');
+          expect(res.body).to.have.property('error');
+          expect(res.body.error).to.be.a('string');
+          expect(res.body).to.deep.equal(mock['/'].post.expectedResponseMissingShowsArray);
+        })
+        .expect(400, done);
+    });
   });
 
   describe('# GET /shows', () => {

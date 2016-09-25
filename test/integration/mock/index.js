@@ -1,22 +1,24 @@
 /* eslint-disable */
 'use strict';
 
+const path = require('path');
+
 /** Mocking JSON objects primarily for server/client integration
     and unit testing. Includes request objects and expected
-    response objects (if any).
+    response objects (if any). Once imported module, use as follows:
 
-    Once imported module, use as follows:
-
+    # / POST
     let someRequestVariable = mock['/'].post.request;
     let someExpectedResponseVariable = mock['/'].post.expectedResponse;
 
-    or for a GET route;
-
+    # / GET
     let someOtherResponseVaraible = mock['/shows'].get.expectedResponse;
     **/
 
 /** Import data used where needed/relevant. Coupling is OK in this context! **/
-const showsRouteMockData = require('../../../server/routes/util/mock');
+const rootPath = path.join('..', '..', '..');
+const showsRouteMockData = require(path.join(rootPath, 'server/routes/util/mock'));
+const showsNotArrayError = require(path.join(rootPath, 'server/controllers/config/index')).showsNotArrayError;
 
 module.exports = {
   /** Route '/' mock data **/
@@ -292,6 +294,24 @@ module.exports = {
                 "title": "The Originals"
             }
         ],
+      },
+      /** Mock malformed JSON object. Contents do not matter! **/
+      requestMalformedJSON: '{"justAnother":{"Malformed":\'JSON"}}',
+      expectedResponseMalformedJSON: {
+        error: 'Could not decode request: JSON parsing failed',
+      },
+      /** Mock request where payload contains a String instead of an array
+          of shows
+      **/
+      requestMissingShowsArray: {
+        "payload": "Where-Shows-Array-Should-Be-But-String-Here-Instead!",
+        "skip": 0,
+        "take": 10,
+        "totalRecords": 75,
+      },
+      /** As per: server/controllers/config/index, showsNotArrayError **/
+      expectedResponseMissingShowsArray: {
+        error: showsNotArrayError,
       },
     },
 

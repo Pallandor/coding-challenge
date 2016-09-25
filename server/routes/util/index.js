@@ -17,6 +17,6 @@ exports.sendShows = (res, shows) =>
     Controllers/Routes
 **/
 exports.sendError = (res, err) =>
-  res.status(500).json({
+  res.status(400).json({
     error: err,
   });
