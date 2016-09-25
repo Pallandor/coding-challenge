@@ -33,8 +33,8 @@ gulp.task('lint', () => {
           client-side HTML and JS assets, to test serving HTML page.
           Keep 'build-client' task dependency!
           **/
-gulp.task('test-server-integration', ['build-client'], () => {
-  gulp.src('./test/integration/serverSpec.js', {read: false})
+gulp.task('test-server', ['build-client'], () => {
+  return gulp.src('./test/index.js', {read: false})
     .pipe(plumber())
     .pipe(wait(1500))
     .pipe(mocha())
@@ -70,7 +70,6 @@ gulp.task('nodemon', cb => {
 });
 
 /** Composed Gulp Tasks **/
-gulp.task('test-server', ['test-server-integration']);
 gulp.task('test', ['lint', 'test-server']);
 gulp.task('client', ['clean-client', 'build-client']);
 
@@ -81,5 +80,5 @@ gulp.task('default', ['client']);
 gulp.task('dev', ['client', 'test', 'nodemon'], () => {
   gulp.watch('./server/**/*.js', {debounceDelay: 500}, ['test']);
   gulp.watch('./client/**/*.js', {debounceDelay: 500}, ['lint', 'client']);
-  gulp.watch('./test/server/**/*.js', {debounceDelay: 500}, ['test']);
+  gulp.watch('./test/**/*.js', {debounceDelay: 500}, ['test']);
 });

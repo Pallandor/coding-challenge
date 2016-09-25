@@ -5,7 +5,7 @@ const mock = require('./mock');
 const showController = require('../../server/controllers/show');
 const showControllerConfig = require('../../server/controllers/config');
 
-describe('# Data Controllers Test Suite', () => {
+describe('# Controllers Unit Test Suite', () => {
   describe('# Controllers - Show', () => {
     describe('# filterShowsDefault', () => {
       it('should be a function', done => {
@@ -14,7 +14,7 @@ describe('# Data Controllers Test Suite', () => {
       });
 
       it('should accept an array of shows and return a valid promise', done => {
-        const mockInput = mock.controllers['show'].input;
+        const mockInput = mock.controllers.show.input;
         const expectedPromise = showController.filterShowsDefault(mockInput);
 
         /** Test whether it is a thenable. (Per Promises/A+ spec) **/
@@ -24,7 +24,7 @@ describe('# Data Controllers Test Suite', () => {
       });
 
       it('should resolve to a filtered array of shows using a predefined predicate', () => {
-        const mockInput = mock.controllers['show'].input;
+        const mockInput = mock.controllers.show.input;
         const expectedPromise = showController.filterShowsDefault(mockInput);
         /** Recreate the filtered array using the same operation and
             same default predicate/test function.
@@ -40,7 +40,7 @@ describe('# Data Controllers Test Suite', () => {
       });
 
       it('should return a rejected Promise object if shows is not an array', () => {
-        const mockBadInput = mock.controllers['show'].badInput;
+        const mockBadInput = mock.controllers.show.badInput;
         const expectedRejectedPromise = showController.filterShowsDefault(mockBadInput);
 
         /** We expect it to return the standard showsNotArrayError message as
@@ -64,7 +64,7 @@ describe('# Data Controllers Test Suite', () => {
             Controller method, it simply needs an array of shows, filtered
             or otherwise.
         **/
-        const mockInput = mock.controllers['show'].input;
+        const mockInput = mock.controllers.show.input;
         const expectedPromise = showController.transformShowsDefault(mockInput);
 
         /** Test whether it is a thenable. (Per Promises/A+ spec) **/
@@ -74,7 +74,7 @@ describe('# Data Controllers Test Suite', () => {
       });
 
       it('should resolve to an array of transformed show objects using a predefined transform', () => {
-        const mockInput = mock.controllers['show'].input;
+        const mockInput = mock.controllers.show.input;
         const expectedPromise = showController.transformShowsDefault(mockInput);
         const expectedTransformedShows = mockInput.map(showControllerConfig.defaultShowTransform);
 
@@ -85,7 +85,7 @@ describe('# Data Controllers Test Suite', () => {
       });
 
       it('should return a rejected Promise object if shows is not an array', () => {
-        const mockBadInput = mock.controllers['show'].badInput;
+        const mockBadInput = mock.controllers.show.badInput;
         const expectedRejectedPromise = showController.transformShowsDefault(mockBadInput);
 
         return expectedRejectedPromise.catch(err => {
