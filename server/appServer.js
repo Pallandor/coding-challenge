@@ -6,7 +6,7 @@ const express = require('express');
     on unhandled client GET requests to root directory.
 **/
 module.exports = app => {
-  const buildPath = path.resolve(__dirname, '..', 'build');
+  const buildPath = path.resolve(process.cwd(), 'build');
   const indexFileName = 'index.html';
   app.use(express.static(buildPath));
   app.get('*', (req, res) => res.sendFile(path.join(buildPath, indexFileName)));

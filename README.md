@@ -5,9 +5,9 @@ Node/Express server on the back-end, hosting API (POST) service at:
 `https://love-your-tech-stack.herokuapp.com/` and mock (GET) service at:
 `https://love-your-tech-stack.herokuapp.com/shows`.
 
-React/Redux client on front-end which consumes API (mock) service at '/shows', for
-viewing in browser/mobile at: `https://love-your-tech-stack.herokuapp.com/`. React-router
-for lovely SEO friendly slugs.
+React/Redux client on front-end which consumes API service, for
+viewing in browser/mobile at: `https://love-your-tech-stack.herokuapp.com/`.
+React-router for lovely SEO friendly slugs.
 
 Also fixed to allow for bookmarking (will serve asset
 and because route renders nested ShowPage Component inside HomePage container, state
