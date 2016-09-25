@@ -6,6 +6,7 @@ const request = require('supertest');
 const mock = require('./mock');
 const fs = require('fs');
 const path = require('path');
+const showControllerConfig = require('../../server/controllers/config');
 const port = process.env.PORT || 4000;
 
 describe('# API Integration Test Suite', () => {
@@ -91,6 +92,8 @@ describe('# API Integration Test Suite', () => {
         .expect(400, done);
     });
     it('should return error with status 400 if shows array is not included', done => {
+      const expectedError = showControllerConfig.showsNotArrayError;
+
       request(app)
         .post('/')
         .type('json')
@@ -99,8 +102,10 @@ describe('# API Integration Test Suite', () => {
         .expect(res => {
           expect(res.body).to.be.an('object');
           expect(res.body).to.have.property('error');
-          expect(res.body.error).to.be.a('string');
-          expect(res.body).to.deep.equal(mock['/'].post.expectedResponseMissingShowsArray);
+          expect(res.body.error).to.have.property('name');
+          expect(res.body.error).to.have.property('message');
+          expect(res.body.error.name).to.equal(expectedError.name);
+          expect(res.body.error.message).to.equal(expectedError.message);
         })
         .expect(400, done);
     });

@@ -1,5 +1,7 @@
 'use strict';
 
+const CustomError = require('../../util').CustomError;
+
 /** Controllers Config/Defaults **/
 
 /** Provides a default predicate/filter test that accepts a Show object
@@ -18,6 +20,5 @@ exports.defaultShowTransform = show => ({
   title: show.title || null,
 });
 
-exports.showsNotArrayError =
-  'Shows was not a valid array. Please check to ensure an array of shows is ' +
-  'being included in the relevant object';
+/** Use CustomError constructor to create new Error object **/
+exports.showsNotArrayError = new CustomError('Shows was not a valid array. Please check to ensure an array of shows is being included in the relevant object');

@@ -18,8 +18,6 @@ const path = require('path');
 /** Import data used where needed/relevant. Coupling is OK in this context! **/
 const rootPath = path.join('..', '..', '..');
 const showsRouteMockData = require(path.join(rootPath, 'server/routes/util/mock'));
-const showsNotArrayError = require(path.join(rootPath, 'server/controllers/config/index')).showsNotArrayError;
-
 module.exports = {
   /** Route '/' mock data **/
   '/': {
@@ -309,12 +307,7 @@ module.exports = {
         "take": 10,
         "totalRecords": 75,
       },
-      /** As per: server/controllers/config/index, showsNotArrayError **/
-      expectedResponseMissingShowsArray: {
-        error: showsNotArrayError,
-      },
     },
-
   },
   /** Route '/shows' mock data **/
   '/shows': {
