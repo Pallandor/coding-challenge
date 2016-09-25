@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const del = require('del');
 const gulp = require('gulp');
@@ -29,8 +29,12 @@ gulp.task('lint', () => {
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('test-server', () => {
-  gulp.src('./test/server/index.js', {read: false})
+/** NOTE: Mocha Server Integration Tests depend on having pre-built
+          client-side HTML and JS assets, to test serving HTML page.
+          Keep 'build-client' task dependency!
+          **/
+gulp.task('test-server-integration', ['build-client'], () => {
+  gulp.src('./test/integration/serverSpec.js', {read: false})
     .pipe(plumber())
     .pipe(wait(1500))
     .pipe(mocha())
@@ -65,15 +69,15 @@ gulp.task('nodemon', cb => {
   });
 });
 
-/** NOTE: Mocha Server Integration Tests may depend on having pre-built
-          client-side HTML and JS assets, to test serving HTML page.
-          **/
-// TODO: Make client build a dependency of running server tests? IF required! 
+/** Composed Gulp Tasks **/
+gulp.task('test-server', ['test-server-integration']);
 gulp.task('test', ['lint', 'test-server']);
 gulp.task('client', ['clean-client', 'build-client']);
 
+/** Default Task (Client build) **/
 gulp.task('default', ['client']);
 
+/** Development Gulp Tasks **/
 gulp.task('dev', ['client', 'test', 'nodemon'], () => {
   gulp.watch('./server/**/*.js', {debounceDelay: 500}, ['test']);
   gulp.watch('./client/**/*.js', {debounceDelay: 500}, ['lint', 'client']);

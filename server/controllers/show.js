@@ -23,8 +23,8 @@ exports.filterShowsDefault = shows =>
     transformer function and returns a Promise that resolves with the array
     of transformed shows. Propogates error if 'shows' is not an array.
 **/
- exports.transformShowsDefault = shows =>
-  new Promise((resolve, reject) => {
-    if (!Array.isArray(shows)) reject(config.showsNotArrayError);
-    resolve(shows.map(config.defaultShowTransform));
-  });
+exports.transformShowsDefault = shows =>
+new Promise((resolve, reject) => {
+  if (!Array.isArray(shows)) reject(config.showsNotArrayError);
+  resolve(shows.map(config.defaultShowTransform));
+});
