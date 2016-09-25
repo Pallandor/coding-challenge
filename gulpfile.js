@@ -65,12 +65,16 @@ gulp.task('nodemon', cb => {
   });
 });
 
+/** NOTE: Mocha Server Integration Tests may depend on having pre-built
+          client-side HTML and JS assets, to test serving HTML page.
+          **/
+// TODO: Make client build a dependency of running server tests? IF required! 
 gulp.task('test', ['lint', 'test-server']);
 gulp.task('client', ['clean-client', 'build-client']);
 
 gulp.task('default', ['client']);
 
-gulp.task('dev', ['test', 'client', 'nodemon'], () => {
+gulp.task('dev', ['client', 'test', 'nodemon'], () => {
   gulp.watch('./server/**/*.js', {debounceDelay: 500}, ['test']);
   gulp.watch('./client/**/*.js', {debounceDelay: 500}, ['lint', 'client']);
   gulp.watch('./test/server/**/*.js', {debounceDelay: 500}, ['test']);
