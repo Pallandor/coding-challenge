@@ -95,5 +95,4 @@ describe('# Controllers Unit Test Suite', () => {
       });
     });
   });
-  /** Add additional Controller test-suites here! **/
 });

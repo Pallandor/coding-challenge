@@ -31,7 +31,12 @@ app.get('/shows', showHandler.getShows);
 app.use(customWare.reportBadJSON());
 
 /** Serve assets and allow HTML5 mode routing **/
-installAppServer(app);
+// installAppServer(app);
+
+const buildPath = path.join(__dirname, '..', 'build');
+const indexFileName = 'index.html';
+app.use(express.static(buildPath));
+app.get('*', (req, res) => res.sendFile(path.join(buildPath, indexFileName)));
 
 /** Start Server **/
 if (!module.parent) {

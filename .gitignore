@@ -16,7 +16,8 @@ pids
 node_modules
 
 # Build directory
-build
+# Comment below, to ensure not ignored in Travis-Heroku Deployment
+# build
 
 # Editor temporary files
 *~
