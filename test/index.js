@@ -1,5 +1,6 @@
 'use strict';
 
+/** Import Mocha Server Tests **/
 const integrationTestSuite = require('./integration/serverSpec');
 const unitTestSuite = require('./unit/controllerSpec');
 

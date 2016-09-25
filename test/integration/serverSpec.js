@@ -90,7 +90,7 @@ describe('# API Integration Test Suite', () => {
         })
         .expect(400, done);
     });
-    it('should return error with status 500 if shows array is not included', done => {
+    it('should return error with status 400 if shows array is not included', done => {
       request(app)
         .post('/')
         .type('json')
