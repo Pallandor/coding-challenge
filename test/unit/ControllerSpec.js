@@ -67,7 +67,7 @@ describe('# Controllers Unit Test Suite', () => {
         const mockInput = mock.controllers.show.input;
         const expectedPromise = showController.transformShowsDefault(mockInput);
 
-        /** Test whether it is a thenable. (Per Promises/A+ spec) **/
+        /** Test whether it is a thenable (per Promises/A+ spec) **/
         expect(expectedPromise).to.have.property('then');
         expect(expectedPromise.then).to.be.a('function');
         done();
@@ -95,6 +95,5 @@ describe('# Controllers Unit Test Suite', () => {
       });
     });
   });
-
   /** Add additional Controller test-suites here! **/
 });

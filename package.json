@@ -6,8 +6,9 @@
   "scripts": {
     "lint": "gulp lint",
     "dev": "NODE_ENV=development gulp dev",
-    "test": "gulp test",
-    "postinstall": "npm run build",
+    "dev:test": "gulp test",
+    "server:unit-test": "mocha test/unit/controllerSpec",
+    "server:integration-test": "mocha test/integration/serverSpec",
     "build": "NODE_ENV=production gulp",
     "start": "node server/index.js"
   },

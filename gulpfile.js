@@ -46,6 +46,7 @@ gulp.task('test-server', ['build-client'], () => {
     });
 });
 
+/** Server tests task that plays well with other Gulp tasks **/
 gulp.task('dev-test-server', ['build-client'], () => {
   return gulp.src('./test/index.js')
     .pipe(plumber())
